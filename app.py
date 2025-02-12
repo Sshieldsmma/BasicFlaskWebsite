@@ -2,7 +2,10 @@ from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
+'''
+Basic application that takes a name from a form a greets the user with a message.
 
+'''
 @app.route('/', methods=['GET', 'POST'])
 def index():
     greeting = ""
@@ -13,3 +16,8 @@ def index():
 
 if __name__ == '__main__':
     app.run(debug = True)
+
+'''
+Added to GitHub, verify at: https://github.com/Sshieldsmma/BasicFlaskWebsite
+
+'''
