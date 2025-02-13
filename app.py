@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, url_for, session, flash, redirect
+from flask import Flask, request, render_template, url_for, session, flash, redirect, get_flashed_messages
 
 app = Flask(__name__)
 app.secret_key = "super_secret_stuff"
@@ -27,8 +27,12 @@ def feedback():
 
 @app.route('/feedback_log', methods=['GET', 'POST'])
 def feedback_log():
-    feedback = session.get('feedback')
-    return f"Saved Feedback: {feedback}"
+    feedback = session.get('feedback')     
+    messages = get_flashed_messages()
+    saved_feedback = f"Saved Feedback: {feedback}"
+    return render_template("feedback_log.html", saved_feedback=saved_feedback, messages=messages)
+
+
 
 
 if __name__ == '__main__':
